@@ -22,3 +22,9 @@ export enum Resolutions {
   'P1440' = 'P1440',
   'P2160' = 'P2160',
 }
+
+export interface CreateVideoRequestBody {
+  title: string
+  author: string
+  availableResolutions: Array<keyof typeof Resolutions>
+}

@@ -1,9 +1,9 @@
-import { getVideos } from './getVideos'
-import { getVideoById } from './getVideoById'
+import { getVideos } from './handlers/getVideos'
+import { getVideoById } from './handlers/getVideoById'
 import { Router } from 'express'
-import { createVideo } from './createVideo'
-import { updateVideo } from './updateVideo'
-import { deleteVideoById } from './deleteVideoById'
+import { createVideo } from './handlers/createVideo'
+import { updateVideo } from './handlers/updateVideo'
+import { deleteVideoById } from './handlers/deleteVideoById'
 
 export const videoRouter = Router()
 
