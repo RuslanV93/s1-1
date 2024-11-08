@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.availableResolutionValidator = exports.authorValidation = exports.titleValidation = void 0;
 const validationTypes_1 = require("./validationTypes");
 const titleValidation = (title, errorsArray) => {
-    if (!title) {
+    if (!title || title.trim() === '') {
         errorsArray.push({ field: 'title', message: 'no title' });
         return;
     }
@@ -37,13 +37,6 @@ const authorValidation = (author, errorsArray) => {
 };
 exports.authorValidation = authorValidation;
 const availableResolutionValidator = (availableResolution, errorsArray) => {
-    if (!Array.isArray(availableResolution)) {
-        errorsArray.push({
-            message: 'exist not valid value',
-            field: 'availableResolutions',
-        });
-        return;
-    }
     if (availableResolution && availableResolution.length > 0) {
         availableResolution.forEach((res) => {
             if (!Object.keys(validationTypes_1.Resolutions).includes(res)) {

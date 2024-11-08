@@ -1,13 +1,15 @@
-import db from '../db/db'
+import db from '../../db/db'
 import { Request, Response } from 'express'
 
+// @ts-ignore
 export const deleteVideoById = (req: Request, res: Response) => {
   const videoId = +req.params.id
   const videoIndex = db.videos.findIndex((v) => v.id === videoId)
-
+  console.log(videoIndex)
   if (videoIndex === -1) {
-    res.status(404).json({ message: 'Video not found.' })
+    res.sendStatus(404)
+    return
   }
-  db.videos.filter((video) => video.id !== videoId)
+  db.videos = db.videos.filter((video) => video.id !== videoId)
   res.sendStatus(204)
 }

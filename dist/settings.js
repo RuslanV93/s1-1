@@ -7,7 +7,7 @@ const SETTINGS = {
     PATH: {
         DEFAULT: '/',
         VIDEOS: '/videos',
-        VIDEO_BY_ID: '/videos/:id'
-    }
+        VIDEO_BY_ID: '/videos/:id',
+    },
 };
 exports.default = SETTINGS;

@@ -10,8 +10,7 @@ const updateVideoValidation = (body, errorsArray) => {
         });
     }
     if (body.minAgeRestriction &&
-        body.minAgeRestriction < 1 &&
-        body.minAgeRestriction > 18) {
+        (body.minAgeRestriction < 1 || body.minAgeRestriction > 18)) {
         errorsArray.push({
             message: "can't be less than 1 and more than 18",
             field: 'minAgeRestriction',

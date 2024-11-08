@@ -1,14 +1,14 @@
 import { ErrorField, Resolutions } from './validationTypes'
 
 export const titleValidation = (
-  title: string | undefined,
+  title: string | undefined | null,
   errorsArray: Array<ErrorField>,
 ) => {
-  if (!title) {
+  if (!title || title.trim() === '') {
     errorsArray.push({ field: 'title', message: 'no title' })
     return
   }
-  if (typeof title !== 'string') {
+  if ((typeof title as any) !== 'string') {
     errorsArray.push({ field: 'title', message: 'title must be a string' })
     return
   }
@@ -28,7 +28,7 @@ export const authorValidation = (
     errorsArray.push({ field: 'author', message: 'no author' })
     return
   }
-  if (typeof author !== 'string') {
+  if ((typeof author as any) !== 'string') {
     errorsArray.push({ field: 'author', message: 'author must be a string' })
     return
   }
@@ -44,13 +44,6 @@ export const availableResolutionValidator = (
   availableResolution: Array<string>,
   errorsArray: Array<ErrorField>,
 ) => {
-  if (!Array.isArray(availableResolution)) {
-    errorsArray.push({
-      message: 'exist not valid value',
-      field: 'availableResolutions',
-    })
-    return
-  }
   if (availableResolution && availableResolution.length > 0) {
     availableResolution.forEach((res: string) => {
       if (!Object.keys(Resolutions).includes(res)) {
