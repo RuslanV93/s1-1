@@ -10,7 +10,9 @@ import db from '../../db/db'
 export const updateVideo = (req: Request, res: Response) => {
   const videoId = +req.params.id
   const videoIndex = db.videos.findIndex((video) => video.id === videoId)
-  const video = db.videos.find((video) => video.id === videoId)
+  const video = db.videos.filter((video) => video.id === videoId)
+  console.log(req.params.id)
+  console.log(video)
   if (!video) {
     res.status(404).json({ message: 'Video not found' })
     return

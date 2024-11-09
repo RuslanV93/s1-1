@@ -13,7 +13,7 @@ export interface videoDBType {
 }
 
 const randomId = () => {
-  return Math.floor(Math.random() * 10)
+  return Math.floor(Math.random() * 100)
 }
 export const video1 = (): videoDBType => {
   return {
